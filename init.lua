@@ -599,3 +599,43 @@ minetest.register_chatcommand("verbana_gui", {
         verbana_gui_form:show(player)
     end,
 })
+
+if minetest.global_exists("sway") then
+    local pagename = "verbana_gui:gui"
+    sway.register_page(pagename, {
+        title = S('Verbana'),
+        is_in_nav = function (_self, player, _ctx)
+            return verbana.privs.is_moderator(player:get_player_name())
+        end,
+        get = function (_self, player, _ctx)
+            return sway.Form {
+                verbana_gui_form:embed {
+                    player = player,
+                    name = pagename,
+                }
+            }
+        end
+    })
+    local function on_priv_change(player_name, _granter_player_name, priv)
+        if not sway.enabled then
+            return
+        end
+
+        if priv ~= verbana.privs.moderator then
+            return
+        end
+
+        local player = minetest.get_player_by_name(player_name)
+        if not player then
+            return
+        end
+
+        if sway.get_page(player) ~= pagename then
+            return
+        end
+
+        sway.set_player_inventory_formspec(player)
+    end
+    minetest.register_on_priv_grant(on_priv_change)
+    minetest.register_on_priv_revoke(on_priv_change)
+end

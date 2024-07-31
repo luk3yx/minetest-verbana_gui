@@ -7,6 +7,7 @@ read_globals = {
     'minetest',
     'flow',
     'verbana',
+    'sway'
 }
 
 -- This error is thrown for methods that don't use the implicit "self"
