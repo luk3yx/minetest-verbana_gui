@@ -604,10 +604,10 @@ if minetest.global_exists("sway") then
     local pagename = "verbana_gui:gui"
     sway.register_page(pagename, {
         title = S('Verbana'),
-        is_in_nav = function (_self, player, _ctx)
+        is_in_nav = function (_, player, _)
             return verbana.privs.is_moderator(player:get_player_name())
         end,
-        get = function (_self, player, _ctx)
+        get = function (_, player, _)
             return sway.Form {
                 verbana_gui_form:embed {
                     player = player,
@@ -616,7 +616,7 @@ if minetest.global_exists("sway") then
             }
         end
     })
-    local function on_priv_change(player_name, _granter_player_name, priv)
+    local function on_priv_change(player_name, _, priv)
         if not sway.enabled then
             return
         end
