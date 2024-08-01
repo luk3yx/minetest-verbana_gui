@@ -601,8 +601,8 @@ minetest.register_chatcommand("verbana_gui", {
 })
 
 if minetest.global_exists("sway") then
-    local pagename = "verbana_gui:gui"
-    sway.register_page(pagename, {
+    local pagename = "verbana_gui"
+    sway.register_page(pagename..":gui", {
         title = S('Verbana'),
         is_in_nav = function (_, player, _)
             return verbana.privs.is_moderator(player:get_player_name())
