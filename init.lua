@@ -631,7 +631,7 @@ if minetest.global_exists("sway") then
             return
         end
 
-        if sway.get_page(player) ~= pagename then
+        if sway.get_page(player) ~= pagename..":gui" then
             return
         end
 
