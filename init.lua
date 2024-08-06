@@ -97,7 +97,8 @@ local function status_log(log, name, show_target_player, show_more)
     local vbox = {name = name, h = 3, expand = true}
     for i, row in ipairs(log) do
         local ts = os.date("%Y-%m-%d", row.timestamp)
-        local s = get_status_name(row.status_id)
+        local s = name == "ip_status" and get_ip_status_name(row.status_id) or
+            get_status_name(row.status_id)
         local msg
         local target = row.player_name
         if show_target_player then
