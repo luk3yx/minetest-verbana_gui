@@ -445,7 +445,7 @@ local verbana_gui_form = flow.make_gui(function(player, ctx)
         if lib_ip.is_valid_ip(ip) then
             local ipint = lib_ip.ipstr_to_ipint(ip)
             local asn, asn_desc = lib_asn.lookup(ipint)
-            local ip_status = data.get_ip_status(ip)
+            local ip_status = data.get_ip_status(ipint)
             local ip_status_id = ip_status and ip_status.id
 
             table.insert_all(vbox, {
