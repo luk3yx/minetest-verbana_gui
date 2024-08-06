@@ -3,9 +3,10 @@ max_line_length = 90
 read_globals = {
     string = {fields = {'split', 'trim'}},
     table = {fields = {'copy', 'indexof', 'insert_all'}},
+    'flow',
     'formspec_ast',
     'minetest',
-    'flow',
+    'sway',
     'verbana',
 }
 
