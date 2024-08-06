@@ -6,8 +6,8 @@ read_globals = {
     'formspec_ast',
     'minetest',
     'flow',
+    'sway',
     'verbana',
-    'sway'
 }
 
 -- This error is thrown for methods that don't use the implicit "self"
